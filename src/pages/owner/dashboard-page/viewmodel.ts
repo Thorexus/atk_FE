@@ -24,10 +24,15 @@ export const useViewModel = () => {
   const getAllEvent = () => {
     const useRepository = new UserRepository(new UserService());
 
-    useRepository.GetTheirEventList(payload).then(res => {
-      setEvents(res);
-      setIsEventLoading(false);
-    });
+    useRepository
+      .GetTheirEventList(payload)
+      .then(res => {
+        setEvents(res);
+        setIsEventLoading(false);
+      })
+      .catch(() => {
+        setIsEventLoading(false);
+      });
   };
 
   const getEventDetail = (eventId: number) => {
