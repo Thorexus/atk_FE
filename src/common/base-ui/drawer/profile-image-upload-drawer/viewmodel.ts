@@ -27,9 +27,7 @@ export const useViewModel = ({
     formData.append('files.image', file.item(0) as File);
     formData.append(
       'data',
-      `{"name": "${
-        file.item(0)?.name
-      }", "uploader": ${userInfo.getId()}, "event_id": ${'0'}}`,
+      `{"name": "${file.item(0)?.name}", "uploader": ${userInfo.getId()}}`,
     );
 
     const adminRepository = new AdminRepository(new AdminService());
