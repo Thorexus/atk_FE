@@ -12,7 +12,8 @@ type UserActionButtonProps = {
 const UserActionButton = ({ setViewType, event }: UserActionButtonProps) => {
   return (
     <>
-      {event.getUserAtkStatus() === TestStatusEnum.NOT_FOUND &&
+      {(event.getUserAtkStatus() === TestStatusEnum.NOT_FOUND ||
+        event.getUserAtkStatus() === undefined) &&
         !event?.getUserAtkImage() && (
           <Button
             title="อัพโหลดผลตรวจ"
@@ -21,7 +22,8 @@ const UserActionButton = ({ setViewType, event }: UserActionButtonProps) => {
           />
         )}
 
-      {event.getUserAtkStatus() === TestStatusEnum.NOT_FOUND &&
+      {(event.getUserAtkStatus() === TestStatusEnum.NOT_FOUND ||
+        event.getUserAtkStatus() === undefined) &&
         event?.getUserAtkImage() && (
           <Button
             title="กำลังตรวจสอบ"
