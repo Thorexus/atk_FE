@@ -10,6 +10,7 @@ import { useViewModel } from './viewmode';
 import ParticipantCard from 'common/base-ui/participant-card';
 import EventDetailCard from 'common/base-ui/event-detail-card';
 import { cx } from '@emotion/css';
+import SendAlertEmailButton from 'common/base-ui/buttons/send-alert-email-button';
 
 const OwnerEventDetailPage = () => {
   const {
@@ -32,6 +33,8 @@ const OwnerEventDetailPage = () => {
       />
 
       <EventDetailCard event={event} asStaticPreview />
+
+      <SendAlertEmailButton eventId={event.getId()} />
 
       <SectionTitle title="รายชื่อผู้เข้าร่วม" />
 

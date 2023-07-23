@@ -15,7 +15,7 @@ const EventDetailCard = ({
   asStaticPreview?: boolean;
 }) => {
   return (
-    <div className="drop-shadow-large mb-6 rounded-lg bg-white p-4">
+    <div className="drop-shadow-large mb-3 rounded-lg bg-white p-4">
       {isEmpty(event) ? (
         <EventDetailDrawer.Loading
           useActionButton={useActionButton}

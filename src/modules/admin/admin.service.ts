@@ -3,6 +3,7 @@ import { getAccessToken } from 'common/axios/token';
 import CreateEventDTO from './dto/create-event.dto';
 import UpdateEventDTO from './dto/update-event-dto';
 import UpdateUserDTO from './dto/update-user.dto';
+import SendAlertEmailDTO from './dto/send-alert-email.dto';
 
 class AdminService extends AuthAxios {
   constructor() {
@@ -37,6 +38,10 @@ class AdminService extends AuthAxios {
 
   updateUser = (data: UpdateUserDTO) => {
     return this.post('/clients/user/update', data.getBodyJSON());
+  };
+
+  sendAlertEmail = (data: SendAlertEmailDTO) => {
+    return this.post(`/events/edit/${getAccessToken()}`, data.getBodyJSON());
   };
 }
 

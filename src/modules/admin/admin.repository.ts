@@ -1,5 +1,6 @@
 import AdminService from './admin.service';
 import CreateEventDTO from './dto/create-event.dto';
+import SendAlertEmailDTO from './dto/send-alert-email.dto';
 import UpdateEventDTO from './dto/update-event-dto';
 import UpdateUserDTO from './dto/update-user.dto';
 
@@ -32,6 +33,10 @@ class AdminRepository {
 
   updateUser = (data: UpdateUserDTO) => {
     return this.adminService.updateUser(data);
+  };
+
+  sendAlertEmail = (data: SendAlertEmailDTO) => {
+    return this.adminService.sendAlertEmail(data);
   };
 }
 

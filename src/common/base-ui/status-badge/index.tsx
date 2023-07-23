@@ -9,8 +9,6 @@ const StatusBadge = ({ status }: StatusBadgeProps) => {
   if (status === TestStatusEnum.NOT_FOUND || status === TestStatusEnum.ALL)
     return null;
 
-  console.log('status sssss');
-
   return (
     <span
       className={cx(
