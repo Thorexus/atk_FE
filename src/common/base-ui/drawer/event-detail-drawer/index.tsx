@@ -12,6 +12,7 @@ import OwnerActionButton from './upload-atk-container/action-buttons/ower-action
 import UserActionButton from './upload-atk-container/action-buttons/user-action-button';
 import StatusBadge from 'common/base-ui/status-badge';
 import { TestStatusEnum } from 'modules/data-contractor';
+import UpdateAtkContainer from './update-atk-container';
 
 type EventDetailDrawerProps = BaseBottomDrawerProps & {
   initViewType?: detailModalType;
@@ -110,6 +111,14 @@ const EventDetailDrawer = ({
 
       {viewType === 'atk-upload' && (
         <UploadAtkContainer
+          setViewType={setViewType}
+          event={event}
+          setIsOpen={setIsOpen}
+        />
+      )}
+
+      {viewType === 'update-atk-upload' && (
+        <UpdateAtkContainer
           setViewType={setViewType}
           event={event}
           setIsOpen={setIsOpen}

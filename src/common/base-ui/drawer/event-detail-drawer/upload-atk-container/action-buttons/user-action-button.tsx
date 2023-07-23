@@ -10,9 +10,10 @@ type UserActionButtonProps = {
 };
 
 const UserActionButton = ({ setViewType, event }: UserActionButtonProps) => {
+  const eventDate = parseInt(event.getDate().split(' ')[1]);
+  const today = new Date().getDate();
+
   const isAtkUploadable = () => {
-    const eventDate = parseInt(event.getDate().split(' ')[1]);
-    const today = new Date().getDate();
     const startUploadDate = eventDate - 1;
     const lastUploadDate = eventDate;
 
@@ -21,8 +22,30 @@ const UserActionButton = ({ setViewType, event }: UserActionButtonProps) => {
     return true;
   };
 
+  const isAtkEditable = () => {
+    if (
+      event.getUserAtkImage() &&
+      event.getUserAtkStatus() !== TestStatusEnum.NOT_FOUND &&
+      today >= eventDate &&
+      today <= eventDate + 13
+    )
+      return true;
+
+    return false;
+  };
+
   return (
     <>
+      {isAtkEditable() ? (
+        <Button
+          title="แก้ไขผลตรวจ"
+          onClick={() => setViewType('update-atk-upload')}
+          className="mb-2 w-full"
+          variant={VariantEnum.NEUTRAL}
+          container={ButtonContainerEnum.TERTIARY}
+        />
+      ) : null}
+
       {event.getUserAtkStatus() === TestStatusEnum.NOT_FOUND &&
         !event?.getUserAtkImage() && (
           <Button

@@ -5,29 +5,29 @@ import { useViewModel } from './viewmodel';
 import Event from 'modules/event/model/event';
 import { detailModalType } from '../viewmodel';
 
-type UploadAtkContainerProps = {
+type UpdateAtkContainerProps = {
   setViewType: (value: detailModalType) => void;
   event: Event;
   setIsOpen: (value: boolean) => void;
 };
 
-const UploadAtkContainer = ({
+const UpdateAtkContainer = ({
   setViewType,
   event,
   setIsOpen,
-}: UploadAtkContainerProps) => {
-  const { file, setFile, isUploading, handleUploadAtk } = useViewModel({
+}: UpdateAtkContainerProps) => {
+  const { file, setFile, isUploading, handleUpdateAtk } = useViewModel({
     event,
     setIsOpen,
   });
 
   return (
     <div className="flex w-full flex-col gap-y-6">
-      <SectionTitle title="อัพโหลดผลตรวจ" />
+      <SectionTitle title="แก้ไขผลตรวจ" />
       <AtkUploader file={file} onChange={setFile} />
       <ButtonGroup
         confirmButtonTitle="อัพโหลด"
-        confirmButtonClick={handleUploadAtk}
+        confirmButtonClick={handleUpdateAtk}
         cancelButtonTitle="ยกเลิก"
         cancelButtonClick={() => setViewType('detail')}
         isLoading={isUploading}
@@ -36,4 +36,4 @@ const UploadAtkContainer = ({
   );
 };
 
-export default UploadAtkContainer;
+export default UpdateAtkContainer;

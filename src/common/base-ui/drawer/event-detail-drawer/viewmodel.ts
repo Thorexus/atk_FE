@@ -7,7 +7,8 @@ export type detailModalType =
   | 'detail'
   | 'remove'
   | 'atk-upload'
-  | 'profile-upload';
+  | 'profile-upload'
+  | 'update-atk-upload';
 
 export const useViewModel = ({
   initViewType,

@@ -39,4 +39,8 @@ export default class UserRepository {
   uploadAtkImage = (data: FormData) => {
     return this.userService.uploadAtkImage(data);
   };
+
+  updateAtkImage = (data: FormData) => {
+    return this.userService.updateAtkImage(data);
+  };
 }
