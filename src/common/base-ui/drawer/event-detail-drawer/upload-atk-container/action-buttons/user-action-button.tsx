@@ -10,6 +10,17 @@ type UserActionButtonProps = {
 };
 
 const UserActionButton = ({ setViewType, event }: UserActionButtonProps) => {
+  const isAtkUploadable = () => {
+    const eventDate = parseInt(event.getDate().split(' ')[1]);
+    const today = new Date().getDate();
+    const startUploadDate = eventDate - 1;
+    const lastUploadDate = eventDate;
+
+    if (today >= startUploadDate && today <= lastUploadDate) return false;
+
+    return true;
+  };
+
   return (
     <>
       {event.getUserAtkStatus() === TestStatusEnum.NOT_FOUND &&
@@ -18,6 +29,7 @@ const UserActionButton = ({ setViewType, event }: UserActionButtonProps) => {
             title="อัพโหลดผลตรวจ"
             onClick={() => setViewType('atk-upload')}
             className="w-full"
+            disabled={isAtkUploadable()}
           />
         )}
 
