@@ -3,6 +3,7 @@ import { AppIconEnum } from '../icon-component/viewmodel';
 import Event from 'modules/event/model/event';
 import isEmpty from 'lodash/isEmpty';
 import EventDetailDrawer from '../drawer/event-detail-drawer';
+import StatusBadge from '../status-badge';
 
 const EventDetailCard = ({
   event,
@@ -23,13 +24,16 @@ const EventDetailCard = ({
       ) : (
         <>
           <div className="mb-4">
-            <div className="flex gap-x-1">
-              <p className="font-semibold text-primary-500">
-                {event.getDate()}
-              </p>
-              <p className="font-semibold text-primary-500">
-                {event.getTime()}
-              </p>
+            <div className="flex items-center justify-between">
+              <div className="flex gap-x-1">
+                <p className="font-semibold text-primary-500">
+                  {event.getDate()}
+                </p>
+                <p className="font-semibold text-primary-500">
+                  {event.getTime()}
+                </p>
+              </div>
+              <StatusBadge status={event.getEventStatus()} />
             </div>
 
             <p className="h-[64px] font-semibold text-xl line-clamp-2">

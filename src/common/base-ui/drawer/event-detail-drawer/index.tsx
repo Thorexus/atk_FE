@@ -10,6 +10,8 @@ import UploadAtkContainer from './upload-atk-container';
 import AdminActionButton from './upload-atk-container/action-buttons/admin-action-button';
 import OwnerActionButton from './upload-atk-container/action-buttons/ower-action-button';
 import UserActionButton from './upload-atk-container/action-buttons/user-action-button';
+import StatusBadge from 'common/base-ui/status-badge';
+import { TestStatusEnum } from 'modules/data-contractor';
 
 type EventDetailDrawerProps = BaseBottomDrawerProps & {
   initViewType?: detailModalType;
@@ -46,14 +48,18 @@ const EventDetailDrawer = ({
           {!isLoading && !isEmpty(event) ? (
             <>
               <div className="mb-4">
-                <div className="flex items-center gap-x-1">
-                  <p className="font-semibold text-primary-500">
-                    {event.getDate()}
-                  </p>
-                  <p className="font-semibold text-primary-500">
-                    {event.getTime()}
-                  </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-x-1">
+                    <p className="font-semibold text-primary-500">
+                      {event.getDate()}
+                    </p>
+                    <p className="font-semibold text-primary-500">
+                      {event.getTime()}
+                    </p>
+                  </div>
+                  <StatusBadge status={event.getEventStatus()} />
                 </div>
+
                 <p className="h-[64px] font-semibold text-xl text-neutral-900 line-clamp-2">
                   {event.getName()}
                 </p>

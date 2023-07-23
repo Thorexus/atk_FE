@@ -16,6 +16,7 @@ type EventModel = {
   passCheckParticipants?: number;
   userAtkStatus?: TestStatusEnum;
   userAtkImage?: string;
+  eventStatus: TestStatusEnum;
 };
 
 export default class Event {
@@ -61,4 +62,6 @@ export default class Event {
   getMinute = () => this.event.minute;
 
   getUnFormatDate = () => this.event.date;
+
+  getEventStatus = () => this.event.eventStatus;
 }

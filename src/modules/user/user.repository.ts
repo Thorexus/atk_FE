@@ -26,7 +26,13 @@ export default class UserRepository {
         ...res.data,
       }).getBodyJSON();
 
-      return eventResponse.data.map(item => new Event(item));
+      return eventResponse.data.map(
+        item =>
+          new Event({
+            ...item,
+            eventStatus: item.event_status,
+          }),
+      );
     });
   };
 

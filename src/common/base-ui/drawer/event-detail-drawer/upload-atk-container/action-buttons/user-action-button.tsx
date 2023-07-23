@@ -10,7 +10,6 @@ type UserActionButtonProps = {
 };
 
 const UserActionButton = ({ setViewType, event }: UserActionButtonProps) => {
-  console.log('event', event.getUserAtkStatus(), event?.getUserAtkImage());
   return (
     <>
       {event.getUserAtkStatus() === TestStatusEnum.NOT_FOUND &&
