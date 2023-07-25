@@ -5,7 +5,6 @@ import { AppIconEnum } from '../icon-component/viewmodel';
 import { useNavigate } from 'react-router-dom';
 import { ADMIN_SUB_ROUTE } from 'common/constants/route-path';
 import StatusBadge from '../status-badge';
-import { TestStatusEnum } from 'modules/data-contractor';
 
 type EventCardProps = {
   event: Event;
@@ -36,7 +35,7 @@ const EventCard = ({ event, onClick, role = 'guest' }: EventCardProps) => {
 
       <div className="flex items-center justify-between">
         <p className="text-xs text-neutral-700">{event.getLocation()}</p>
-        <StatusBadge status={event.getEventStatus()} />
+        <StatusBadge status={event.getEventStatus()} action="self" />
       </div>
       {role === 'admin' ? (
         <button

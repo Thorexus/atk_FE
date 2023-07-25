@@ -15,6 +15,7 @@ import { ADMIN_ROUTE } from 'common/constants/route-path';
 import ParticipantCard from 'common/base-ui/participant-card';
 import { cx } from '@emotion/css';
 import SendAlertEmailButton from 'common/base-ui/buttons/send-alert-email-button';
+import { isEmpty } from 'lodash';
 
 const AdminEventDetailPage = () => {
   const [createPaticipantDrawerOpen, setCreatePaticipantDrawerOpen] =
@@ -42,7 +43,9 @@ const AdminEventDetailPage = () => {
 
       <EventDetailCard event={event} asStaticPreview />
 
-      <SendAlertEmailButton eventId={event.getId()} />
+      {!isEmpty(event) ? (
+        <SendAlertEmailButton eventId={event.getId()} />
+      ) : null}
 
       <SectionTitle
         title="รายชื่อผู้เข้าร่วม"

@@ -11,7 +11,6 @@ import AdminActionButton from './upload-atk-container/action-buttons/admin-actio
 import OwnerActionButton from './upload-atk-container/action-buttons/ower-action-button';
 import UserActionButton from './upload-atk-container/action-buttons/user-action-button';
 import StatusBadge from 'common/base-ui/status-badge';
-import { TestStatusEnum } from 'modules/data-contractor';
 import UpdateAtkContainer from './update-atk-container';
 
 type EventDetailDrawerProps = BaseBottomDrawerProps & {

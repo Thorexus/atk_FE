@@ -41,7 +41,10 @@ class AdminService extends AuthAxios {
   };
 
   sendAlertEmail = (data: SendAlertEmailDTO) => {
-    return this.post(`/events/edit/${getAccessToken()}`, data.getBodyJSON());
+    return this.post(
+      `/events/sendMailAlert/${getAccessToken()}`,
+      data.getBodyJSON(),
+    );
   };
 }
 

@@ -52,7 +52,7 @@ const UserActionButton = ({ setViewType, event }: UserActionButtonProps) => {
             title="อัพโหลดผลตรวจ"
             onClick={() => setViewType('atk-upload')}
             className="w-full"
-            disabled={isAtkUploadable()}
+            disabled={!isAtkUploadable()}
           />
         )}
 
