@@ -42,7 +42,7 @@ const UserActionButton = ({ setViewType, event }: UserActionButtonProps) => {
           onClick={() => setViewType('update-atk-upload')}
           className="mb-2 w-full"
           variant={VariantEnum.NEUTRAL}
-          container={ButtonContainerEnum.TERTIARY}
+          container={ButtonContainerEnum.OUTLINE}
         />
       ) : null}
 

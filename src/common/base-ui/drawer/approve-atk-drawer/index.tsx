@@ -32,7 +32,7 @@ const ApproveAtkDrawer = (props: ApproveAtkDrawerProps) => {
       <img
         src={props.user.getAtkImage()}
         alt={props.user.getFullName()}
-        className="mb-6 aspect-[1/1.25] h-full w-full"
+        className="mx-auto mb-6 aspect-[1/1.25] h-full max-h-[360px] w-full object-contain"
       />
 
       <Form
