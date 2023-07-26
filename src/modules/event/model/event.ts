@@ -17,6 +17,9 @@ type EventModel = {
   userAtkStatus?: TestStatusEnum;
   userAtkImage?: string;
   eventStatus: TestStatusEnum;
+  dateClose: string;
+  hourClose: string;
+  minuteClose: string;
 };
 
 export default class Event {
@@ -33,7 +36,14 @@ export default class Event {
   getDate = () =>
     `${DateTime.fromJSDate(new Date(this.event.date)).toFormat('ccc dd, LLL')}`;
 
+  getDateClose = () =>
+    `${DateTime.fromJSDate(new Date(this.event.dateClose)).toFormat(
+      'ccc dd, LLL',
+    )}`;
+
   getTime = () => `${this.event.hour}:${this.event.minute} น.`;
+
+  getTimeClose = () => `${this.event.hourClose}:${this.event.minuteClose} น.`;
 
   getLocation = () => `ชั้น ${this.event.floor} ห้อง ${this.event.room}`;
 
@@ -61,7 +71,13 @@ export default class Event {
 
   getMinute = () => this.event.minute;
 
+  getHourClose = () => this.event.hourClose;
+
+  getMinuteClose = () => this.event.minuteClose;
+
   getUnFormatDate = () => this.event.date;
+
+  getUnFormatDateClose = () => this.event.dateClose;
 
   getEventStatus = () => this.event.eventStatus;
 }

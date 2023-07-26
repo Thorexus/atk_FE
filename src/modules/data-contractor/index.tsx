@@ -50,6 +50,9 @@ export interface EventResponse {
   guest_pass_check?: number;
   user_atk_status?: TestStatusEnum;
   user_atk_image?: string;
+  date_close: string;
+  hr_close: string;
+  minute_close: string;
   // atk_image?: string;
 }
 

@@ -17,6 +17,7 @@ export const useViewModel = () => {
     const adminReposity = new AdminRepository(new AdminService());
 
     const eventTime = values.time as unknown as EventTimeType;
+    const eventCloseTime = values.timeClose as unknown as EventTimeType;
 
     const createEventPayload = new CreateEventDTO({
       name: values.name,
@@ -26,6 +27,9 @@ export const useViewModel = () => {
       hour: eventTime.hour,
       minute: eventTime.minute,
       description: values.description,
+      dateClose: new Date(values.dateClose).toISOString(),
+      hrClose: eventCloseTime.hour,
+      minuteClose: eventCloseTime.minute,
     });
 
     return await adminReposity

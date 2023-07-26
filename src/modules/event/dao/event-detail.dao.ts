@@ -17,6 +17,9 @@ export type EventDetailResponseDAO = {
   userAtkImage?: string;
   userAtkStatus?: TestStatusEnum;
   eventStatus: TestStatusEnum;
+  dateClose: string;
+  hourClose: string;
+  minuteClose: string;
 };
 
 export default class EventDetailDAO implements BaseDAO<EventDetailResponseDAO> {
@@ -42,5 +45,8 @@ export default class EventDetailDAO implements BaseDAO<EventDetailResponseDAO> {
     userAtkImage: this.response.user_atk_image,
     userAtkStatus: this.response.user_atk_status,
     eventStatus: this.response.event_status,
+    dateClose: this.response.date_close,
+    hourClose: this.response.hr_close,
+    minuteClose: this.response.minute_close,
   });
 }

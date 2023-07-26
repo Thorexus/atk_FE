@@ -19,14 +19,9 @@ const EventCard = ({ event, onClick, role = 'guest' }: EventCardProps) => {
     <div
       onClick={onClick}
       className="relative rounded-lg border border-neutral-200 p-3">
-      <div className="flex gap-x-1">
-        <p className="font-semibold text-xs text-primary-500">
-          {event.getDate()}
-        </p>
-        <p className="font-semibold text-xs text-primary-500">
-          {event.getTime()}
-        </p>
-      </div>
+      <p className="font-semibold text-xs text-primary-500 line-clamp-1">
+        {`${event.getDate()} ${event.getTime()} ถึง ${event.getDateClose()} ${event.getTimeClose()}`}
+      </p>
 
       <p className="font-semibold line-clamp-1">{event.getName()}</p>
       <p className="text-neuteal-800 mb-1 text-xs line-clamp-2">

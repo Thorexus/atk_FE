@@ -48,17 +48,9 @@ const EventDetailDrawer = ({
           {!isLoading && !isEmpty(event) ? (
             <>
               <div className="mb-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-x-1">
-                    <p className="font-semibold text-primary-500">
-                      {event.getDate()}
-                    </p>
-                    <p className="font-semibold text-primary-500">
-                      {event.getTime()}
-                    </p>
-                  </div>
-                  <StatusBadge status={event.getEventStatus()} />
-                </div>
+                <p className="font-semibold text-primary-500 line-clamp-1">
+                  {`${event.getDate()} ${event.getTime()} ถึง ${event.getDateClose()} ${event.getTimeClose()}`}
+                </p>
 
                 <p className="h-[64px] font-semibold text-xl text-neutral-900 line-clamp-2">
                   {event.getName()}
@@ -66,9 +58,12 @@ const EventDetailDrawer = ({
                 <p className="h-[50px] font-semibold text-neutral-800 line-clamp-2">
                   {event.getDescription()}
                 </p>
-                <p className="mt-1 text-xs text-neutral-700">
-                  {event.getLocation()}
-                </p>
+                <div className="flex justify-between gap-x-2">
+                  <p className="mt-1 text-xs text-neutral-700 line-clamp-1">
+                    {event.getLocation()}
+                  </p>
+                  <StatusBadge status={event.getEventStatus()} />
+                </div>
               </div>
               <div className="mb-6 flex flex-col gap-y-2">
                 <EventAttribute

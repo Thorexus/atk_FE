@@ -7,7 +7,11 @@ type StatusBadgeProps = {
 };
 
 const StatusBadge = ({ status, action = 'event' }: StatusBadgeProps) => {
-  if (status === TestStatusEnum.NOT_FOUND || status === TestStatusEnum.ALL)
+  if (
+    status === TestStatusEnum.NOT_FOUND ||
+    status === TestStatusEnum.ALL ||
+    !status
+  )
     return null;
 
   return (
