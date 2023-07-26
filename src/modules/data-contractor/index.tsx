@@ -26,6 +26,8 @@ export interface UserResponse {
   user_atk_image?: string;
   user_atk_status?: TestStatusEnum;
   date_of_birth: string;
+  reupload_status?: TestStatusEnum;
+  atk_image_reupload?: string;
 }
 
 export interface GetUserInfoResponse {

@@ -26,10 +26,10 @@ const ParticipantCard = ({
 }: ParticipantCardProps) => {
   const [approveAtkDrawerOpen, setApproveAtkDrawerOpen] = useState(false);
   const [deleteUserDrawerOpen, setDeleteUserDrawerOpen] = useState(false);
+  const [isReupload, setIsReupload] = useState(false);
 
   const navigate = useNavigate();
   const params = useParams();
-
   return (
     <div className="relative flex w-full flex-col gap-y-3 rounded-lg border border-neutral-300 p-3">
       <div className="flex items-center gap-x-2">
@@ -54,15 +54,32 @@ const ParticipantCard = ({
         </div>
       </div>
 
-      {user.getStatus() === TestStatusEnum.NOT_FOUND && user.getAtkImage() && (
+      {user.getReuploadAtkStatus() === TestStatusEnum.NOT_FOUND &&
+      user.getReuploadAtkImage() ? (
+        <Button
+          title="ตรวจสอบผลอีกครั้ง"
+          container={ButtonContainerEnum.SECONDARY}
+          onClick={() => {
+            setIsReupload(true);
+            setApproveAtkDrawerOpen(true);
+          }}
+          className="w-full"
+        />
+      ) : (
         <Button
           title="ตรวจสอบผล"
           container={ButtonContainerEnum.SECONDARY}
-          onClick={() => setApproveAtkDrawerOpen(true)}
+          onClick={() => {
+            setIsReupload(false);
+            setApproveAtkDrawerOpen(true);
+          }}
           className="w-full"
         />
       )}
-      {user.getStatus() === TestStatusEnum.NOT_FOUND && !user.getAtkImage() && (
+
+      {(user.getReuploadAtkStatus() === TestStatusEnum.NOT_FOUND &&
+        !user.getReuploadAtkImage()) ||
+      (user.getStatus() === TestStatusEnum.NOT_FOUND && !user.getAtkImage()) ? (
         <Button
           title="ยังไม่ได้ส่งผลตรวจ"
           container={ButtonContainerEnum.SECONDARY}
@@ -71,8 +88,10 @@ const ParticipantCard = ({
           className="w-full"
           disabled
         />
-      )}
-      {user.getStatus() === TestStatusEnum.POSITIVE && (
+      ) : null}
+
+      {user.getReuploadAtkStatus() === TestStatusEnum.POSITIVE ||
+      user.getStatus() === TestStatusEnum.POSITIVE ? (
         <Button
           title="ติดเชื้อ"
           container={ButtonContainerEnum.OUTLINE}
@@ -81,8 +100,10 @@ const ParticipantCard = ({
           className="w-full"
           disabled
         />
-      )}
-      {user.getStatus() === TestStatusEnum.NEGATIVE && (
+      ) : null}
+
+      {user.getReuploadAtkStatus() === TestStatusEnum.NEGATIVE ||
+      user.getStatus() === TestStatusEnum.NEGATIVE ? (
         <Button
           title="ไม่พบเชื้อ"
           container={ButtonContainerEnum.OUTLINE}
@@ -91,7 +112,7 @@ const ParticipantCard = ({
           className="w-full"
           disabled
         />
-      )}
+      ) : null}
 
       {useActionButton ? (
         <div className="absolute top-[5px] right-2 flex flex-col items-center gap-y-2 p-2">
@@ -122,6 +143,7 @@ const ParticipantCard = ({
         user={user}
         event={event}
         fetchParentData={fetchParentData}
+        isReupload={isReupload}
       />
 
       <DeleteUserDrawer
