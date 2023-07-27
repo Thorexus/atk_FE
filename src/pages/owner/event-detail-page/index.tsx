@@ -22,6 +22,7 @@ const OwnerEventDetailPage = () => {
     participantList,
     tabDataAmount,
     getParticipants,
+    getEventDetail,
   } = useViewModel();
 
   const navigate = useNavigate();
@@ -65,7 +66,10 @@ const OwnerEventDetailPage = () => {
                   key={item.getId()}
                   user={item}
                   event={event}
-                  fetchParentData={getParticipants}
+                  fetchParentData={() => {
+                    getEventDetail();
+                    getParticipants();
+                  }}
                 />
               ))
             ) : (

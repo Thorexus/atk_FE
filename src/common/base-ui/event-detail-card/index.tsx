@@ -34,7 +34,6 @@ const EventDetailCard = ({
             <p className="mb-1 h-[50px] font-semibold text-neutral-800 line-clamp-2">
               {event.getDescription()}
             </p>
-            <>{console.log('event.getEventStatus()', event.getEventStatus())}</>
             <div className="flex items-center justify-between gap-x-2">
               <p className="text-xs text-neutral-700">{event.getLocation()}</p>
               <StatusBadge status={event.getEventStatus()} />

@@ -54,6 +54,8 @@ export interface EventResponse {
   hr_close: string;
   minute_close: string;
   // atk_image?: string;
+  reupload_status?: TestStatusEnum;
+  atk_image_reupload?: string;
 }
 
 export interface AllEventResponse {

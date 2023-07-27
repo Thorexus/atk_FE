@@ -30,6 +30,7 @@ const AdminEventDetailPage = () => {
     tabDataAmount,
     getParticipants,
     participants,
+    getEventDetail,
   } = useViewModel();
 
   const navigate = useNavigate();
@@ -85,7 +86,10 @@ const AdminEventDetailPage = () => {
                   key={item.getId()}
                   user={item}
                   event={event}
-                  fetchParentData={getParticipants}
+                  fetchParentData={() => {
+                    getEventDetail();
+                    getParticipants();
+                  }}
                   useActionButton
                 />
               ))

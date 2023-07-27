@@ -47,7 +47,6 @@ const EventDetailDrawer = ({
           ) : null}
           {!isLoading && !isEmpty(event) ? (
             <>
-              <>{console.log('event.getTime()', event.getTime())}</>
               <div className="mb-4">
                 <p className="font-semibold text-primary-500 line-clamp-1">
                   {`${event.getDate()} ${event.getTime()} ถึง ${event.getDateClose()} ${event.getTimeClose()}`}

@@ -102,5 +102,6 @@ export const useViewModel = () => {
     participantList,
     tabDataAmount,
     getParticipants,
+    getEventDetail,
   };
 };

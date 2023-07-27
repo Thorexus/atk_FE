@@ -20,6 +20,8 @@ type EventModel = {
   dateClose: string;
   hourClose: string;
   minuteClose: string;
+  reuploadAtkStatus?: TestStatusEnum;
+  reuploadAtkImage?: string;
 };
 
 export default class Event {
@@ -32,6 +34,10 @@ export default class Event {
   getId = () => this.event.id;
 
   getName = () => this.event.name;
+
+  getRawDate = () => this.event.date;
+
+  getRawCloseDate = () => this.event.dateClose;
 
   getDate = () =>
     `${DateTime.fromJSDate(new Date(this.event.date)).toFormat('ccc dd, LLL')}`;
@@ -80,4 +86,8 @@ export default class Event {
   getUnFormatDateClose = () => this.event.dateClose;
 
   getEventStatus = () => this.event.eventStatus;
+
+  getReUploadAtkStatus = () => this.event.reuploadAtkStatus;
+
+  getReUploadAtkImage = () => this.event.reuploadAtkImage;
 }

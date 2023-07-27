@@ -20,6 +20,8 @@ export type EventDetailResponseDAO = {
   dateClose: string;
   hourClose: string;
   minuteClose: string;
+  reuploadAtkStatus?: TestStatusEnum;
+  reuploadAtkImage?: string;
 };
 
 export default class EventDetailDAO implements BaseDAO<EventDetailResponseDAO> {
@@ -48,5 +50,7 @@ export default class EventDetailDAO implements BaseDAO<EventDetailResponseDAO> {
     dateClose: this.response.date_close,
     hourClose: this.response.hr_close,
     minuteClose: this.response.minute_close,
+    reuploadAtkStatus: this.response.reupload_status,
+    reuploadAtkImage: this.response.atk_image_reupload,
   });
 }

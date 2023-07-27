@@ -20,8 +20,6 @@ const ParticipantCardActionButton = ({
   atkImage,
   atkStatus,
 }: ParticipantCardActionButtonProps) => {
-  console.log('user 1st upload', atkStatus, atkImage);
-
   // first atk uploaded && not approve
   if (
     (atkImage && atkStatus === TestStatusEnum.NOT_FOUND) ||

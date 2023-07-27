@@ -27,7 +27,7 @@ export const useViewModel = ({
       'data',
       `{"name": "${
         file.item(0)?.name
-      }", "uploader": ${userInfo.getId()}, "event_id": ${event.getId()}}`,
+      }", "uploader": ${userInfo.getId()}, "event_id": ${event.getId()}, "status_type": "upload"}`,
     );
 
     const userRepository = new UserRepository(new UserService());
