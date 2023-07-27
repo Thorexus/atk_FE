@@ -48,16 +48,16 @@ export default class Event {
   getLocation = () => `ชั้น ${this.event.floor} ห้อง ${this.event.room}`;
 
   getDescription = () => this.event.description;
-
+  // + this.event.ownerAmount!
+  // + this.event.ownerAmount!
   getParticipants = () =>
-    this.event.guestAmount! + this.event.ownerAmount! > 0
-      ? `${this.event.guestAmount! + this.event.ownerAmount!} คน`
+    this.event.guestAmount! > 0
+      ? `${this.event.guestAmount!} คน`
       : 'ยังไม่มีผู้เข้าร่วม';
-
+  // + this.event.ownerAmount!
   getPassCheckParticipants = () =>
-    `ผ่านการตรวจ ${this.event.passCheckParticipants} / ${
-      this.event.guestAmount! + this.event.ownerAmount!
-    } คน`;
+    `ผ่านการตรวจ ${this.event.passCheckParticipants} / ${this.event
+      .guestAmount!} คน`;
 
   getUserAtkStatus = () => this.event.userAtkStatus;
 
