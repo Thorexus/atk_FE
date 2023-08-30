@@ -26,11 +26,21 @@ export default class UserRepository {
         ...res.data,
       }).getBodyJSON();
 
-      return eventResponse.data.map(item => new Event(item));
+      return eventResponse.data.map(
+        item =>
+          new Event({
+            ...item,
+            eventStatus: item.event_status,
+          }),
+      );
     });
   };
 
   uploadAtkImage = (data: FormData) => {
     return this.userService.uploadAtkImage(data);
+  };
+
+  updateAtkImage = (data: FormData) => {
+    return this.userService.updateAtkImage(data);
   };
 }

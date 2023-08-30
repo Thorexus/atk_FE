@@ -12,6 +12,7 @@ type ApproveAtkDrawerProps = BaseBottomDrawerProps & {
   event: Event;
   fetchParentData?: () => void;
   setIsOpen: (value: boolean) => void;
+  isReupload: boolean;
 };
 
 const ApproveAtkDrawer = (props: ApproveAtkDrawerProps) => {
@@ -20,6 +21,7 @@ const ApproveAtkDrawer = (props: ApproveAtkDrawerProps) => {
     event: props.event,
     fetchParentData: props.fetchParentData,
     setIsOpen: props.setIsOpen,
+    isReupload: props.isReupload,
   });
 
   return (
@@ -30,9 +32,13 @@ const ApproveAtkDrawer = (props: ApproveAtkDrawerProps) => {
       />
 
       <img
-        src={props.user.getAtkImage()}
+        src={
+          props.isReupload
+            ? props.user.getReuploadAtkImage()
+            : props.user.getAtkImage()
+        }
         alt={props.user.getFullName()}
-        className="mb-6 aspect-[1/1.25] h-full w-full"
+        className="mx-auto mb-6 aspect-[1/1.25] h-full max-h-[360px] w-full object-contain"
       />
 
       <Form

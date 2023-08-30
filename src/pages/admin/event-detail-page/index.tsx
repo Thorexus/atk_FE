@@ -14,6 +14,8 @@ import { useNavigate } from 'react-router-dom';
 import { ADMIN_ROUTE } from 'common/constants/route-path';
 import ParticipantCard from 'common/base-ui/participant-card';
 import { cx } from '@emotion/css';
+import SendAlertEmailButton from 'common/base-ui/buttons/send-alert-email-button';
+import { isEmpty } from 'lodash';
 
 const AdminEventDetailPage = () => {
   const [createPaticipantDrawerOpen, setCreatePaticipantDrawerOpen] =
@@ -28,6 +30,7 @@ const AdminEventDetailPage = () => {
     tabDataAmount,
     getParticipants,
     participants,
+    getEventDetail,
   } = useViewModel();
 
   const navigate = useNavigate();
@@ -40,6 +43,10 @@ const AdminEventDetailPage = () => {
       />
 
       <EventDetailCard event={event} asStaticPreview />
+
+      {!isEmpty(event) ? (
+        <SendAlertEmailButton eventId={event.getId()} />
+      ) : null}
 
       <SectionTitle
         title="รายชื่อผู้เข้าร่วม"
@@ -79,7 +86,10 @@ const AdminEventDetailPage = () => {
                   key={item.getId()}
                   user={item}
                   event={event}
-                  fetchParentData={getParticipants}
+                  fetchParentData={() => {
+                    getEventDetail();
+                    getParticipants();
+                  }}
                   useActionButton
                 />
               ))

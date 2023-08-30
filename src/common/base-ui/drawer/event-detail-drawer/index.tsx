@@ -10,6 +10,8 @@ import UploadAtkContainer from './upload-atk-container';
 import AdminActionButton from './upload-atk-container/action-buttons/admin-action-button';
 import OwnerActionButton from './upload-atk-container/action-buttons/ower-action-button';
 import UserActionButton from './upload-atk-container/action-buttons/user-action-button';
+import StatusBadge from 'common/base-ui/status-badge';
+import UpdateAtkContainer from './update-atk-container';
 
 type EventDetailDrawerProps = BaseBottomDrawerProps & {
   initViewType?: detailModalType;
@@ -46,23 +48,22 @@ const EventDetailDrawer = ({
           {!isLoading && !isEmpty(event) ? (
             <>
               <div className="mb-4">
-                <div className="flex items-center gap-x-1">
-                  <p className="font-semibold text-primary-500">
-                    {event.getDate()}
-                  </p>
-                  <p className="font-semibold text-primary-500">
-                    {event.getTime()}
-                  </p>
-                </div>
+                <p className="font-semibold text-primary-500 line-clamp-1">
+                  {`${event.getDate()} ${event.getTime()} ถึง ${event.getDateClose()} ${event.getTimeClose()}`}
+                </p>
+
                 <p className="h-[64px] font-semibold text-xl text-neutral-900 line-clamp-2">
                   {event.getName()}
                 </p>
                 <p className="h-[50px] font-semibold text-neutral-800 line-clamp-2">
                   {event.getDescription()}
                 </p>
-                <p className="mt-1 text-xs text-neutral-700">
-                  {event.getLocation()}
-                </p>
+                <div className="flex justify-between gap-x-2">
+                  <p className="mt-1 text-xs text-neutral-700 line-clamp-1">
+                    {event.getLocation()}
+                  </p>
+                  <StatusBadge status={event.getEventStatus()} />
+                </div>
               </div>
               <div className="mb-6 flex flex-col gap-y-2">
                 <EventAttribute
@@ -104,6 +105,14 @@ const EventDetailDrawer = ({
 
       {viewType === 'atk-upload' && (
         <UploadAtkContainer
+          setViewType={setViewType}
+          event={event}
+          setIsOpen={setIsOpen}
+        />
+      )}
+
+      {viewType === 'update-atk-upload' && (
+        <UpdateAtkContainer
           setViewType={setViewType}
           event={event}
           setIsOpen={setIsOpen}

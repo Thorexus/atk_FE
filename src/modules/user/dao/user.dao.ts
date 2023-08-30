@@ -19,6 +19,8 @@ export type UserResponseDAO = {
   atkImage?: string;
   userAtkImage?: string;
   birthDate: string;
+  reuploadAtkStatus?: TestStatusEnum;
+  reuploadAtkImage?: string;
 };
 
 export default class UserDAO implements BaseDAO<UserResponseDAO> {
@@ -41,6 +43,8 @@ export default class UserDAO implements BaseDAO<UserResponseDAO> {
       atkImage: this.response.atk_image,
       userAtkImage: this.response.user_atk_image,
       birthDate: this.response.date_of_birth,
+      reuploadAtkStatus: this.response.reupload_status,
+      reuploadAtkImage: this.response.atk_image_reupload,
     };
   };
 }

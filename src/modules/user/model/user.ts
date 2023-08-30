@@ -14,6 +14,8 @@ export type UserModel = {
   userAtkImage?: string;
   userAtkStatus?: TestStatusEnum;
   birthDate: string;
+  reuploadAtkStatus?: TestStatusEnum;
+  reuploadAtkImage?: string;
 };
 
 export default class User {
@@ -75,4 +77,8 @@ export default class User {
   getUserAtkStatus = () => this.user.userAtkStatus;
 
   getBirthDate = () => this.user.birthDate;
+
+  getReuploadAtkStatus = () => this.user.reuploadAtkStatus;
+
+  getReuploadAtkImage = () => this.user.reuploadAtkImage;
 }

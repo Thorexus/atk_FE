@@ -49,11 +49,20 @@ const AdminCreateEventPage = () => {
               <div className="flex items-center gap-x-2">
                 <FieldDatePicker
                   name="date"
-                  label="วันที่"
+                  label="วันที่เริ่ม"
                   placeholder="เลือกวันที่"
                   showOnlyThisYear
                 />
-                <FieldTimePicker name="time" label="เวลา" />
+                <FieldTimePicker name="time" label="เวลาเริ่ม" />
+              </div>
+              <div className="flex items-center gap-x-2">
+                <FieldDatePicker
+                  name="dateClose"
+                  label="วันที่สิ้นสุด"
+                  placeholder="เลือกวันที่"
+                  showOnlyThisYear
+                />
+                <FieldTimePicker name="timeClose" label="เวลาสิ้นสุด" />
               </div>
               <TextArea
                 name="description"
@@ -61,6 +70,9 @@ const AdminCreateEventPage = () => {
                 label="คำอธิบาย"
                 className="overflow-y-auto"
               />
+              {/* dateClose: new Date(values.dateClose).toISOString(),
+      hrClose: eventCloseTime.hour,
+      minuteClose: eventCloseTime.minute, */}
 
               <ButtonGroup
                 confirmButtonType="submit"

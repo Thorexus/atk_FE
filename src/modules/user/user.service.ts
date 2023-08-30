@@ -20,4 +20,8 @@ export default class UserService extends AuthAxios {
   uploadAtkImage = (data: FormData) => {
     return this.post('uploadfile/image/atk', data);
   };
+
+  updateAtkImage = (data: FormData) => {
+    return this.post('uploadfile/image/atk/reupload', data);
+  };
 }

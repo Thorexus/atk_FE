@@ -14,6 +14,14 @@ export type EventDetailResponseDAO = {
   guestAmount?: number;
   ownerAmount?: number;
   passCheckParticipants?: number;
+  userAtkImage?: string;
+  userAtkStatus?: TestStatusEnum;
+  eventStatus: TestStatusEnum;
+  dateClose: string;
+  hourClose: string;
+  minuteClose: string;
+  reuploadAtkStatus?: TestStatusEnum;
+  reuploadAtkImage?: string;
 };
 
 export default class EventDetailDAO implements BaseDAO<EventDetailResponseDAO> {
@@ -36,5 +44,13 @@ export default class EventDetailDAO implements BaseDAO<EventDetailResponseDAO> {
     guestAmount: this.response.guest_amount,
     ownerAmount: this.response.owner_amount,
     passCheckParticipants: this.response.guest_pass_check,
+    userAtkImage: this.response.user_atk_image,
+    userAtkStatus: this.response.user_atk_status,
+    eventStatus: this.response.event_status,
+    dateClose: this.response.date_close,
+    hourClose: this.response.hr_close,
+    minuteClose: this.response.minute_close,
+    reuploadAtkStatus: this.response.reupload_status,
+    reuploadAtkImage: this.response.atk_image_reupload,
   });
 }

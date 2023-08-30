@@ -58,6 +58,10 @@ const Button = ({
             variant === VariantEnum.SUCCESS,
           'border-error-200 bg-error-50 text-error-500':
             variant === VariantEnum.ERROR,
+          'border-warning-200 bg-warning-50 text-warning-500':
+            variant === VariantEnum.WARNING,
+          'border-neutral-200 bg-neutral-50 text-neutral-600':
+            variant === VariantEnum.NEUTRAL,
         },
 
         container !== ButtonContainerEnum.OUTLINE && 'border-transparent',

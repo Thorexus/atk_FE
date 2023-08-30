@@ -16,6 +16,12 @@ type EventModel = {
   passCheckParticipants?: number;
   userAtkStatus?: TestStatusEnum;
   userAtkImage?: string;
+  eventStatus: TestStatusEnum;
+  dateClose: string;
+  hourClose: string;
+  minuteClose: string;
+  reuploadAtkStatus?: TestStatusEnum;
+  reuploadAtkImage?: string;
 };
 
 export default class Event {
@@ -29,24 +35,35 @@ export default class Event {
 
   getName = () => this.event.name;
 
+  getRawDate = () => this.event.date;
+
+  getRawCloseDate = () => this.event.dateClose;
+
   getDate = () =>
     `${DateTime.fromJSDate(new Date(this.event.date)).toFormat('ccc dd, LLL')}`;
 
+  getDateClose = () =>
+    `${DateTime.fromJSDate(new Date(this.event.dateClose)).toFormat(
+      'ccc dd, LLL',
+    )}`;
+
   getTime = () => `${this.event.hour}:${this.event.minute} น.`;
+
+  getTimeClose = () => `${this.event.hourClose}:${this.event.minuteClose} น.`;
 
   getLocation = () => `ชั้น ${this.event.floor} ห้อง ${this.event.room}`;
 
   getDescription = () => this.event.description;
-
+  // + this.event.ownerAmount!
+  // + this.event.ownerAmount!
   getParticipants = () =>
-    this.event.guestAmount! + this.event.ownerAmount! > 0
-      ? `${this.event.guestAmount! + this.event.ownerAmount!} คน`
+    this.event.guestAmount! > 0
+      ? `${this.event.guestAmount!} คน`
       : 'ยังไม่มีผู้เข้าร่วม';
-
+  // + this.event.ownerAmount!
   getPassCheckParticipants = () =>
-    `ผ่านการตรวจ ${this.event.passCheckParticipants} / ${
-      this.event.guestAmount! + this.event.ownerAmount!
-    } คน`;
+    `ผ่านการตรวจ ${this.event.passCheckParticipants} / ${this.event
+      .guestAmount!} คน`;
 
   getUserAtkStatus = () => this.event.userAtkStatus;
 
@@ -60,5 +77,17 @@ export default class Event {
 
   getMinute = () => this.event.minute;
 
+  getHourClose = () => this.event.hourClose;
+
+  getMinuteClose = () => this.event.minuteClose;
+
   getUnFormatDate = () => this.event.date;
+
+  getUnFormatDateClose = () => this.event.dateClose;
+
+  getEventStatus = () => this.event.eventStatus;
+
+  getReUploadAtkStatus = () => this.event.reuploadAtkStatus;
+
+  getReUploadAtkImage = () => this.event.reuploadAtkImage;
 }

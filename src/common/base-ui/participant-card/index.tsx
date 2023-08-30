@@ -1,7 +1,5 @@
 import { TestStatusEnum } from 'modules/data-contractor';
 import User from 'modules/user/model/user';
-import Button, { ButtonContainerEnum } from '../buttons/button';
-import { VariantEnum } from 'common/types/component';
 import ParticipantCardLoading from './loading';
 import ApproveAtkDrawer from '../drawer/approve-atk-drawer';
 import { useState } from 'react';
@@ -10,6 +8,7 @@ import Icon from '../icon-component';
 import { AppIconEnum } from '../icon-component/viewmodel';
 import DeleteUserDrawer from '../drawer/delete-user-drawer';
 import { useNavigate, useParams } from 'react-router-dom';
+import { ParticipantCardActionButton } from './action-button';
 
 type ParticipantCardProps = {
   user: User;
@@ -26,10 +25,10 @@ const ParticipantCard = ({
 }: ParticipantCardProps) => {
   const [approveAtkDrawerOpen, setApproveAtkDrawerOpen] = useState(false);
   const [deleteUserDrawerOpen, setDeleteUserDrawerOpen] = useState(false);
+  const [isReupload, setIsReupload] = useState(false);
 
   const navigate = useNavigate();
   const params = useParams();
-
   return (
     <div className="relative flex w-full flex-col gap-y-3 rounded-lg border border-neutral-300 p-3">
       <div className="flex items-center gap-x-2">
@@ -54,44 +53,27 @@ const ParticipantCard = ({
         </div>
       </div>
 
-      {user.getStatus() === TestStatusEnum.NOT_FOUND && user.getAtkImage() && (
-        <Button
-          title="ตรวจสอบผล"
-          container={ButtonContainerEnum.SECONDARY}
-          onClick={() => setApproveAtkDrawerOpen(true)}
-          className="w-full"
-        />
-      )}
-      {user.getStatus() === TestStatusEnum.NOT_FOUND && !user.getAtkImage() && (
-        <Button
-          title="ยังไม่ได้ส่งผลตรวจ"
-          container={ButtonContainerEnum.SECONDARY}
-          variant={VariantEnum.NEUTRAL}
-          onClick={() => null}
-          className="w-full"
-          disabled
-        />
-      )}
-      {user.getStatus() === TestStatusEnum.POSITIVE && (
-        <Button
-          title="ติดเชื้อ"
-          container={ButtonContainerEnum.OUTLINE}
-          variant={VariantEnum.ERROR}
-          onClick={() => null}
-          className="w-full"
-          disabled
-        />
-      )}
-      {user.getStatus() === TestStatusEnum.NEGATIVE && (
-        <Button
-          title="ไม่พบเชื้อ"
-          container={ButtonContainerEnum.OUTLINE}
-          variant={VariantEnum.SUCCESS}
-          onClick={() => null}
-          className="w-full"
-          disabled
-        />
-      )}
+      <>
+        {user.getReuploadAtkImage() ? (
+          <ParticipantCardActionButton
+            user={user}
+            setIsReupload={setIsReupload}
+            reupload={true}
+            setApproveAtkDrawerOpen={setApproveAtkDrawerOpen}
+            atkImage={user.getReuploadAtkImage()}
+            atkStatus={user.getReuploadAtkStatus() as TestStatusEnum}
+          />
+        ) : (
+          <ParticipantCardActionButton
+            user={user}
+            setIsReupload={setIsReupload}
+            reupload={false}
+            setApproveAtkDrawerOpen={setApproveAtkDrawerOpen}
+            atkImage={user.getAtkImage()}
+            atkStatus={user.getStatus()}
+          />
+        )}
+      </>
 
       {useActionButton ? (
         <div className="absolute top-[5px] right-2 flex flex-col items-center gap-y-2 p-2">
@@ -122,6 +104,7 @@ const ParticipantCard = ({
         user={user}
         event={event}
         fetchParentData={fetchParentData}
+        isReupload={isReupload}
       />
 
       <DeleteUserDrawer

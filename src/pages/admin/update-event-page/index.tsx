@@ -47,6 +47,11 @@ const AdminUpdateEventPage = () => {
                 hour: eventDetail.getHour(),
                 minute: eventDetail.getMinute(),
               },
+              dateClose: new Date(eventDetail.getUnFormatDateClose()),
+              timeClose: {
+                hour: eventDetail.getHourClose(),
+                minute: eventDetail.getMinuteClose(),
+              },
               description: eventDetail.getDescription(),
             }}
             render={({ handleSubmit, submitting }) => {
@@ -67,10 +72,18 @@ const AdminUpdateEventPage = () => {
                   <div className="flex items-center gap-x-2">
                     <FieldDatePicker
                       name="date"
-                      label="วันที่"
+                      label="วันที่เริ่ม"
                       placeholder="เลือกวันที่"
                     />
-                    <FieldTimePicker name="time" label="เวลา" />
+                    <FieldTimePicker name="time" label="เวลาเริ่ม" />
+                  </div>
+                  <div className="flex items-center gap-x-2">
+                    <FieldDatePicker
+                      name="dateClose"
+                      label="วันที่สิ้นสุด"
+                      placeholder="เลือกวันที่"
+                    />
+                    <FieldTimePicker name="timeClose" label="เวลาสิ้นสุด" />
                   </div>
                   <TextArea
                     name="description"

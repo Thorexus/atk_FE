@@ -26,6 +26,8 @@ export interface UserResponse {
   user_atk_image?: string;
   user_atk_status?: TestStatusEnum;
   date_of_birth: string;
+  reupload_status?: TestStatusEnum;
+  atk_image_reupload?: string;
 }
 
 export interface GetUserInfoResponse {
@@ -46,9 +48,14 @@ export interface EventResponse {
   guest_amount?: number;
   owner_amount?: number;
   guest_pass_check?: number;
-  // user_atk_status?: TestStatusEnum;
-  // user_atk_image?: string;
+  user_atk_status?: TestStatusEnum;
+  user_atk_image?: string;
+  date_close: string;
+  hr_close: string;
+  minute_close: string;
   // atk_image?: string;
+  reupload_status?: TestStatusEnum;
+  atk_image_reupload?: string;
 }
 
 export interface AllEventResponse {

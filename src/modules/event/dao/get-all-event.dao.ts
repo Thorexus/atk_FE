@@ -22,6 +22,10 @@ export default class GetAllEventDAO implements BaseDAO<GetAllEventResponseDAO> {
         hour: item.hr_open,
         minute: item.minute_open,
         status: item.event_status,
+        eventStatus: item.event_status,
+        dateClose: item.date_close,
+        hourClose: item.hr_close,
+        minuteClose: item.minute_close,
       };
     }),
   });

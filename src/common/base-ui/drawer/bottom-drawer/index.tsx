@@ -46,7 +46,7 @@ const BottomDrawer = ({
                 containerClassName,
                 'fixed bottom-0 z-50 flex h-fit w-full flex-col rounded-t-lg bg-white p-4 font-sukhumvit',
               )}>
-              {children}
+              <div className="mx-auto w-full max-w-[640px]">{children}</div>
             </div>
           </Transition.Child>
         </div>

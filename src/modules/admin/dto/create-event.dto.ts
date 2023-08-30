@@ -8,6 +8,9 @@ type CreateEventPayloadData = {
   hour: string;
   minute: string;
   description: string;
+  dateClose: string;
+  hrClose: string;
+  minuteClose: string;
 };
 
 export default class CreateEventDTO implements BaseDTO {
@@ -26,6 +29,9 @@ export default class CreateEventDTO implements BaseDTO {
       hr_open: this.event.hour,
       minute_open: this.event.minute,
       description: this.event.description,
+      date_close: this.event.dateClose,
+      hr_close: this.event.hrClose,
+      minute_close: this.event.minuteClose,
     };
   };
 }

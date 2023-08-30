@@ -17,7 +17,7 @@ export const useViewModel = ({
 
   const { userInfo } = useContextAuthManager();
 
-  const handleUploadAtk = () => {
+  const handleUpdateAtk = () => {
     setIsUploading(true);
 
     const formData = new FormData();
@@ -27,15 +27,15 @@ export const useViewModel = ({
       'data',
       `{"name": "${
         file.item(0)?.name
-      }", "uploader": ${userInfo.getId()}, "event_id": ${event.getId()}, "status_type": "upload"}`,
+      }", "uploader": ${userInfo.getId()}, "event_id": ${event.getId()}, "status_type": "reupload"}`,
     );
 
     const userRepository = new UserRepository(new UserService());
 
     userRepository
-      .uploadAtkImage(formData)
+      .updateAtkImage(formData)
       .then(() => {
-        toaster('success', 'อัพโหลดสำเร็จ', 'ผลตรวจถูกบันทึก');
+        toaster('success', 'อัพโหลดสำเร็จ', 'ผลตรวจถูกแก้ไข');
 
         setIsOpen(false);
         setIsUploading(false);
@@ -46,5 +46,5 @@ export const useViewModel = ({
       });
   };
 
-  return { file, setFile, handleUploadAtk, isUploading };
+  return { file, setFile, handleUpdateAtk, isUploading };
 };

@@ -7,6 +7,7 @@ export const useFormValidation = () => {
     floor: yup.number().required('โปรดกรอกข้อมูลให้ครบ'),
     room: yup.string().required('โปรดกรอกข้อมูลให้ครบ'),
     date: yup.date().required('โปรดกรอกข้อมูลให้ครบ'),
+    dateClose: yup.date().required('โปรดกรอกข้อมูลให้ครบ'),
     description: yup.string().required('โปรดกรอกข้อมูลให้ครบ'),
   });
 

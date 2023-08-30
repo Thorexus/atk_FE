@@ -12,11 +12,13 @@ export const useViewModel = ({
   event,
   fetchParentData,
   setIsOpen,
+  isReupload,
 }: {
   user: User;
   event: Event;
   fetchParentData?: () => void;
   setIsOpen: (value: boolean) => void;
+  isReupload: boolean;
 }) => {
   const handleApproveAtk = async (values: Record<string, string>) => {
     const eventRepository = new EventRepository(new EventService());
@@ -26,6 +28,7 @@ export const useViewModel = ({
       userId: user.getId(),
       eventId: event.getId(),
       status: values.atkStatus as TestStatusEnum,
+      statusType: isReupload ? 'reupload' : 'upload',
     });
 
     return await eventRepository

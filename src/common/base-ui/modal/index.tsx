@@ -27,8 +27,8 @@ const BaseModal = ({
         onClose={() => {
           setIsOpen(false);
         }}>
-        <div className="block h-full items-end justify-center p-0 text-center">
-          <Dialog.Overlay className="fixed inset-0  bg-neutral-900 opacity-50" />
+        <div className="block h-full items-end justify-center p-4 text-center">
+          <Dialog.Overlay className="fixed inset-0 bg-neutral-900 opacity-50" />
 
           <span
             className={cx(
@@ -54,7 +54,7 @@ const BaseModal = ({
             <div
               className={cx(
                 className,
-                'relative inline-block transform overflow-hidden rounded-lg bg-white p-8 text-center align-middle shadow-xl transition-all',
+                'relative inline-block transform overflow-hidden rounded-lg bg-white p-4 text-center align-middle shadow-xl transition-all',
               )}>
               {children}
             </div>
